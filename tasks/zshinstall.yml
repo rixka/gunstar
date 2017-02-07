@@ -1,0 +1,54 @@
+---
+- hosts: all
+  vars:
+    zsh_theme: krix
+    zsh_plugins:
+      - git
+      - node
+      - npm
+      - nyan
+      - zsh-syntax-highlighting
+
+  tasks:
+    - name: determine if oh-my-zsh is installed
+      stat: path=~/.oh-my-zsh
+      register: oh_my_zsh
+
+    - name: Cloning fonts
+      git:
+        repo=https://github.com/powerline/fonts
+        dest=~/.config/powerlinefonts
+        accept_hostkey=yes
+      register: fontCloned
+
+    - name: Install Fonts
+      shell: ~/.config/powerlinefonts/install.sh chdir=~/.config/powerlinefonts
+      when: fontCloned|success
+
+    - name: Set monospace font
+      command: gsettings set org.gnome.desktop.interface monospace-font-name 'Sauce Code Powerline 10'
+
+    - name: Install z script
+      git: repo=https://github.com/rupa/z dest=~/.z-dir
+
+    - name: Install zsh
+      apt: name=zsh state=present
+      become: true
+
+    - name: Clone oh-my-zsh
+      git: repo=http://github.com/robbyrussell/oh-my-zsh dest=~/.oh-my-zsh
+      when: not oh_my_zsh.stat.exists
+
+    - name: clone zsh syntax highlighting
+      git: repo=http://github.com/zsh-users/zsh-syntax-highlighting.git dest=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+      when: not oh_my_zsh.stat.exists
+
+    - name: Copy zshrc
+      template: src=../templates/zsh/zshrc dest=~/.zshrc
+
+    - name: Copy zsh-themes
+      shell: cp -r ../templates/zsh/themes/* ~/.oh-my-zsh/themes/
+
+    - name: chsh to zsh
+      command: chsh -s /bin/zsh
+      become: true

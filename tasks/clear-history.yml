@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - name: remove bash history
+      file: path=/home/developer/.bash_history state=absent
+
+    - name: remove zsh history
+      file: path=/home/developer/.zsh_history state=absent

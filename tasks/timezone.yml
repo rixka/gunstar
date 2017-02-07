@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Update packages
+      apt: update_cache=yes
+
+    - name: Install ntp
+      apt: name=ntp state=present
+
+    - name: set UTC to no
+      lineinfile: dest=/etc/default/rcS regexp=^UTC= line=UTC=no
+
+    - name: Set timezone
+      copy: content="Europe/London\n"
+            dest=/etc/timezone
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
+      notify:
+        - update timezone
+
+  handlers:
+    - name: update timezone
+      command: dpkg-reconfigure --frontend noninteractive tzdata

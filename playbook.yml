@@ -1,0 +1,15 @@
+---
+- include: tasks/node.yml
+- include: tasks/elixir.yml
+- include: tasks/zshinstall.yml      # Needs a reboot to take effect
+- include: tasks/docker.yml
+- include: tasks/timezone.yml
+- include: tasks/clear-history.yml
+- include: tasks/terraform.yml
+
+# Optional installs
+# Reboot after you run these
+# - include: tasks-optional/atom.yml
+# - include: tasks-optional/googlechrome.yml
+# - include: tasks-optional/slack.yml
+# - include: tasks-optional/spotify.yml

@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Add erlang key
+      apt_key: url=https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc state=present
+
+    - name: Add erlang
+      apt_repository: repo='deb https://packages.erlang-solutions.com/ubuntu trusty contrib' state=present
+
+    - name: Update packages
+      apt: update_cache=yes
+
+    - name: Install erlang
+      apt: name=esl-erlang state=present
+
+    - name: Install elixir
+      apt: name=elixir state=latest
+
+    - name: determine phoenix version
+      shell: mix phoenix.new -v
+      register: phoenix_version
+      ignore_errors: yes
+
+    - name: install phoenix
+      command: mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+      when: phoenix_version.rc != 0

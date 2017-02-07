@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: download nodesource setup
+      get_url: url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodesource_setup.sh mode=0755
+
+    - name: install nodejs
+      command: /tmp/nodesource_setup.sh
+
+    - name: remove nodesource setup
+      file: path=/tmp/nodesource_setup.sh state=absent
+
+    - name: install nodejs from nodesource
+      apt: name=nodejs state=latest
