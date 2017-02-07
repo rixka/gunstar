@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install gems
+      gem: name={{ item }} state=latest
+      with_items:
+        - bundler
+        - lolcat
+
+    - name: install pip packages
+      pip: name={{ item }} state=latest
+      with_items:
+        - thefuck
