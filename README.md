@@ -33,7 +33,7 @@ Next we need to run the ansible command which will run the playbook.  Ansible wi
 sudo ./run.sh
 ```
 
-Look in **./playbook.yaml** for optional installs of slack, atom, chrome, spotify
+Look in **./playbook.yml** for optional installs of slack, atom, chrome, spotify
 
 ### Troubleshooting
 

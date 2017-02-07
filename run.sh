@@ -1,1 +1,1 @@
-ansible-playbook --ask-become-pass playbook.yaml
+ansible-playbook --ask-become-pass playbook.yml
