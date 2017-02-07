@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install atom packages
+      shell: apm install {{ item }}
+      with_items:
+        - atom-beautify
+        - atom-shortcuts
+        - autocomplete-elixir
+        - file-icons
+        - highlight-selected
+        - language-babel
+        - language-docker
+        - language-elixir
+        - language-lua
+        - language-nginx
+        - language-puppet
+        - linter
+        - linter-eslint
+        - linter-lua
+        - linter-tidy
+        - minimap
+        - toggle-quotes
