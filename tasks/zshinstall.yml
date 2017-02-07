@@ -14,28 +14,28 @@
       stat: path=~/.oh-my-zsh
       register: oh_my_zsh
 
-    - name: Cloning fonts
+    - name: cloning fonts
       git:
         repo=https://github.com/powerline/fonts
         dest=~/.config/powerlinefonts
         accept_hostkey=yes
       register: fontCloned
 
-    - name: Install Fonts
+    - name: install fonts
       shell: ~/.config/powerlinefonts/install.sh chdir=~/.config/powerlinefonts
       when: fontCloned|success
 
-    - name: Set monospace font
+    - name: set monospace font
       command: gsettings set org.gnome.desktop.interface monospace-font-name 'Sauce Code Powerline 10'
 
-    - name: Install z script
+    - name: install z script
       git: repo=https://github.com/rupa/z dest=~/.z-dir
 
-    - name: Install zsh
+    - name: install zsh
       apt: name=zsh state=present
       become: true
 
-    - name: Clone oh-my-zsh
+    - name: clone oh-my-zsh
       git: repo=http://github.com/robbyrussell/oh-my-zsh dest=~/.oh-my-zsh
       when: not oh_my_zsh.stat.exists
 
@@ -43,10 +43,10 @@
       git: repo=http://github.com/zsh-users/zsh-syntax-highlighting.git dest=~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
       when: not oh_my_zsh.stat.exists
 
-    - name: Copy zshrc
+    - name: copy zshrc
       template: src=../templates/zsh/zshrc dest=~/.zshrc
 
-    - name: Copy zsh-themes
+    - name: copy zsh-themes
       shell: cp -r ../templates/zsh/themes/* ~/.oh-my-zsh/themes/
 
     - name: chsh to zsh

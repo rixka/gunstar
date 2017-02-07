@@ -2,19 +2,19 @@
 - hosts: all
   become: true
   tasks:
-    - name: Update packages
+    - name: update packages
       apt: update_cache=yes
 
     - name: install docker prerequisites
       apt: name=linux-image-extra-{{ansible_kernel}}
 
-    - name: Install apt-transport-https
+    - name: install apt-transport-https
       apt: name='apt-transport-https' state=present
 
-    - name: Install ca-certificates
+    - name: install ca-certificates
       apt: name='ca-certificates' state=present
 
-    - name: Add gpg key for docker
+    - name: add gpg key for docker
       apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D
 
     - name: add docker apt repo
@@ -23,11 +23,11 @@
     - name: install docker
       apt: name=docker-engine update_cache=yes state=latest
 
-    - name: Update packages
+    - name: update packages
       apt: update_cache=yes
 
     - name: add developer to the docker group
       user: name=developer groups=docker append=yes
 
-    - name: Download docker-compose
+    - name: download docker-compose
       get_url: url=https://github.com/docker/compose/releases/download/1.7.1/docker-compose-{{ansible_system}}-{{ansible_machine}} dest=/usr/local/bin/docker-compose mode=0755

@@ -2,19 +2,19 @@
 - hosts: all
   become: true
   tasks:
-    - name: Add erlang key
+    - name: add erlang key
       apt_key: url=https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc state=present
 
-    - name: Add erlang
+    - name: add erlang
       apt_repository: repo='deb https://packages.erlang-solutions.com/ubuntu trusty contrib' state=present
 
-    - name: Update packages
+    - name: update packages
       apt: update_cache=yes
 
-    - name: Install erlang
+    - name: install erlang
       apt: name=esl-erlang state=present
 
-    - name: Install elixir
+    - name: install elixir
       apt: name=elixir state=latest
 
     - name: determine phoenix version
