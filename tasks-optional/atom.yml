@@ -1,7 +1,0 @@
----
-- hosts: all
-  become: true
-  tasks:
-    - name: install atom
-      apt:
-        deb: https://github.com/atom/atom/releases/download/v1.8.0/atom-amd64.deb
