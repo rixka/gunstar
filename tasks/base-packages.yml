@@ -12,6 +12,7 @@
         - docker
         - docker-compose
         - nodejs
+        - terminator
         - tree
 
     - name: install gems
