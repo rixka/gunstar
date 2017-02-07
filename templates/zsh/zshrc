@@ -11,12 +11,7 @@ plugins=( {% for plugin in zsh_plugins %}{{ plugin }} {% endfor %} )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# Fuckety fukc
-eval "$(thefuck --alias)"
-
-# Terraform Path
+# path
 export PATH=$PATH:/usr/local/terraform
 
 # ssh
@@ -25,4 +20,5 @@ ssh-add
 
 # aliases
 alias grep="grep --color"
+alias fuck="thefuck"
 alias mv="mv -i"

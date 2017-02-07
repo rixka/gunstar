@@ -1,12 +1,10 @@
 ---
-- include: tasks/clear-history.yml
-- include: tasks/docker.yml
+- include: tasks/base-packages.yml
 - include: tasks/elixir.yml
-- include: tasks/misc-packages.yml
-- include: tasks/node.yml
 - include: tasks/terraform.yml
 - include: tasks/timezone.yml
 - include: tasks/zsh-install.yml      # Needs a reboot to take effect
+- include: tasks/clear-history.yml
 
 # Optional installs
 # Reboot after you run these
