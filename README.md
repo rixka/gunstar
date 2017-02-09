@@ -3,7 +3,7 @@
 ![alt text](
 http://segascream.com/wp-content/uploads/2016/02/gunstar-heroes-header.png)
 
-This repository builds an Ubuntu based virtual machine with development tools on it.
+Gunstar will setup up an Ubuntu machine with developer tools.
 
 ## Setup
 
