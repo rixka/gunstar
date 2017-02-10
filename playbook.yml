@@ -10,6 +10,6 @@
 # Reboot after you run these
 # - include: tasks-optional/atom-packages.yml
 # - include: tasks-optional/google-chrome.yml
-# - include: tasks-option/nylas-email.yml
+# - include: tasks-optional/nylas-email.yml
 # - include: tasks-optional/slack.yml
 # - include: tasks-optional/spotify.yml
