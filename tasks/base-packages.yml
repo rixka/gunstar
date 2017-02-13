@@ -12,6 +12,7 @@
         - docker
         - docker-compose
         - nodejs
+        - ruby
         - terminator
         - tree
 
