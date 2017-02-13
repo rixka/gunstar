@@ -2,9 +2,6 @@
 - hosts: all
   become: true
   tasks:
-    - name: update packages
-      apt: update_cache=yes
-
     - name: Install ntp
       apt: name=ntp state=present
 

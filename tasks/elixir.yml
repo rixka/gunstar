@@ -8,9 +8,6 @@
     - name: add erlang
       apt_repository: repo='deb https://packages.erlang-solutions.com/ubuntu trusty contrib' state=present
 
-    - name: update packages
-      apt: update_cache=yes
-
     - name: install erlang
       apt: name=esl-erlang state=present
 

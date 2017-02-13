@@ -8,8 +8,5 @@
     - name:  add the Spotify repository
       apt_repository: repo='deb http://repository.spotify.com stable non-free' state=present
 
-    - name: update packages
-      apt: update_cache=yes
-
     - name: install spotify
       apt: name=spotify-client state=present
