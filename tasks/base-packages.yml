@@ -3,7 +3,10 @@
   become: true
   tasks:
     - name: add atom to apt repo
-      apt_repository: repo='ppa:webupd8team/atom'
+      apt_repository: repo={{ item }}
+      with_items:
+        - 'ppa:webupd8team/atom'
+        - 'ppa:shutter/ppa'
 
     - name: update packages
       apt: update_cache=yes
@@ -17,6 +20,7 @@
         - nodejs
         - python-pip
         - ruby
+        - shutter
         - terminator
         - tree
 
