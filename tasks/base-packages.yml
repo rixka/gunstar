@@ -23,6 +23,7 @@
         - shutter
         - terminator
         - tree
+        - vim
 
     - name: install gems
       gem: name={{ item }} state=latest
