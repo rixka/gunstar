@@ -36,3 +36,6 @@
         - awscli
         - thefuck
         - virtualenv
+
+    - name: copy vimrc
+      template: src=../templates/vim/vimrc dest=~/.vimrc
