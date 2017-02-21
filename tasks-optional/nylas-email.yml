@@ -1,6 +1,0 @@
----
-- hosts: all
-  become: true
-  tasks:
-    - name: install nylas email
-      apt: deb=https://github.com/nylas/N1/releases/download/0.4.45/N1-0.4.45.deb
