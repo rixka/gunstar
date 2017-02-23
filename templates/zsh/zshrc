@@ -19,6 +19,6 @@ eval `ssh-agent -s`
 ssh-add
 
 # aliases
-alias grep="grep --color"
-alias fuck="thefuck"
 alias mv="mv -i"
+alias grep="grep --color"
+alias fuck='$(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
